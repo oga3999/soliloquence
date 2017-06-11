@@ -1,0 +1,18 @@
+<%= form_for(@text,url: choose_new_or_edit) do |f| %>
+ <% if @text.errors.any? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   <h2><%= @text.errors.count %>件のエラーがあります</h2>
+   <ul style="list-style:none">
+    <% @text.errors.full_messages.each do |msg|%>
+    <li><%= msg %></li>
+    <% end %>
+   </ul>
+  </div>
+ <% end %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content, :class => "form-control",:rows => 3 , :placeholder => "Please enter a tweet here." %>
+ <br>
+ <%= f.submit"Submit", class:"btn btn-success btn-border"%> <%= link_to "To history list",texts_path, class: "btn btn-warning btn-border" %>
+<% end %>

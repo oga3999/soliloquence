@@ -1,0 +1,18 @@
+<div class="container">
+ <div class=" col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+  <h1>Confirm with this content ?</h1>
+  <div class="confirm-group">
+   <%=form_for(@text) do |f| %>
+    <%= f.hidden_field :content %>
+    <div class="confirm-box">
+     <%= @text.content %>
+    </div>
+    <%= f.submit"confirm",class:"confirm-btn btn-success btn-border"%>
+   <% end %>
+   <%=form_for(@text,url: new_text_path, method:'get') do |f| %>
+    <%= f.hidden_field :content %> 
+    <%= f.submit"back",name:'back',class:"confirm-btn2 btn-warning btn-border" %>
+   <% end %>
+  </div>
+ </div>
+</div>

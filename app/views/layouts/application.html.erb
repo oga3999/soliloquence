@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soliloquence</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%=link_to"Soliloquence",root_path,class:"navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+       <li><%= link_to "Index",texts_path %></li>
+       <li>
+        <button class="btn btn-default navbar-btn" type="button">
+            <%= link_to "Tweet",new_text_path %>
+        </buton>
+       </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <% flash.each do |key, value| %>
+      <% key = "info" if key == "notice" %>
+      <% key = "danger"  if key == "alert" %>
+      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
+  
+<%= yield %>
+
+
+  <footer>
+   <p><strong>made by T.O since 2017</strong></p>
+  </footer>
+
+</body>
+</html>
